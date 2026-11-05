@@ -1,0 +1,50 @@
+{
+  "disable_streaming": {
+    "description": "插件开关",
+    "type": "bool",
+    "default": true,
+    "hint": "开启时将会关闭流式输出（流式状态下模型文本会在生成过程中直接下发，无法拦截）；关闭时插件完全停用，不注册工具、不注入提示词、不拦截任何输出，行为与未安装本插件一致。"
+  },
+  "suppress_policy": {
+    "description": "直接输出的处理策略",
+    "type": "string",
+    "default": "always_suppress",
+    "options": ["always_suppress", "suppress_after_tool", "never_suppress"],
+    "labels": ["始终丢弃", "工具已回复时丢弃", "从不丢弃"],
+    "hint": "是否丢弃模型输出，即是否返回模型的文本输出，丢弃即不返回模型本身的输出，只返回工具的输出。选「始终丢弃」时模型不调用工具即可完全不回复。"
+  },
+  "inject_system_prompt": {
+    "description": "注入系统提示词",
+    "type": "bool",
+    "default": true,
+    "hint": "在每次请求追加一段提示词，要求模型必须通过 reply_to_user 工具输出回复。"
+  },
+  "custom_system_prompt": {
+    "description": "自定义提示词",
+    "type": "text",
+    "default": "",
+    "hint": "留空时使用内置提示词；填写后完全替换内置提示词。"
+  },
+  "reply_with_mention": {
+    "description": "回复时 @ 发送人",
+    "type": "string",
+    "default": "follow",
+    "options": ["follow", "on", "off"],
+    "labels": ["跟随 AstrBot 配置", "开", "关"],
+    "hint": "工具发送回复时是否 @ 发送人。默认跟随 AstrBot 的 platform_settings.reply_with_mention。"
+  },
+  "reply_with_quote": {
+    "description": "回复时引用发送人消息",
+    "type": "string",
+    "default": "follow",
+    "options": ["follow", "on", "off"],
+    "labels": ["跟随 AstrBot 配置", "开", "关"],
+    "hint": "工具发送回复时是否引用发送人的原消息。默认跟随 AstrBot 的 platform_settings.reply_with_quote。"
+  },
+  "log_tool_call": {
+    "description": "记录工具调用日志",
+    "type": "bool",
+    "default": false,
+    "hint": "在日志中记录模型调用 reply_to_user 工具的次数与文本长度，便于排查模型是否绕过工具。"
+  }
+}

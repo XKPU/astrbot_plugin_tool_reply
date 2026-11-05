@@ -1,0 +1,6 @@
+name: astrbot_plugin_tool_reply
+display_name: 工具化回复
+desc: 让模型通过调用工具来发送回复内容，而不是直接输出文本；支持丢弃模型直出文本、@ 与引用发送人。
+version: v1.0.0
+author: K_PU
+repo: https://github.com/XKPU/astrbot_plugin_tool_reply
